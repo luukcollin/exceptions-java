@@ -6,8 +6,7 @@ public class WoorzoekMissie extends Missie {
     Random rnd = new Random();
     static private int LENGTE_VAN_TROEP = 1_000;
     String troepStr = "bcdfghjklmnpqrsvwxyz";
-    char[] troep = populateChars(troepStr); 
-
+    char[] troep = populateChars(troepStr);
 
     private void genereerWoordZoeker() throws WoordzoekException {
         String[] woorden = new String[]{"paraplu", "parkiet", "bezemwagen", "bananenpuree", "appelstroop"};

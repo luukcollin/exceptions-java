@@ -8,9 +8,9 @@ import static java.lang.System.exit;
 
 public class Main {
     public static void main(String[] args) {
-        Missie[] missies = new Missie[]{new WoorzoekMissie(), new QuizMissie(), new NullPointerMissie(), new ArithmeticExceptionMissie(),new KarakterTelMissie(),new BestandLezenMissie() };
+        Missie[] missies = new Missie[]{new WoordOmdraaienMissie(), new WoorzoekMissie(), new QuizMissie(), new NullPointerMissie(), new ArithmeticExceptionMissie(),new KarakterTelMissie(),new BestandLezenMissie() };
 //        Integer puntenOntmantelaars = voerMissiesUit(missies, false);
-        Integer puntenSlopers = voerMissiesUit(missies, true);
+        Integer puntenSlopers = voerMissiesUit(missies, false);
 //        Integer totaalPunten = puntenSlopers + puntenOntmantelaars;
 
 //        System.out.printf("Punten behaald als ontmantelaars: %d\n", puntenOntmantelaars);
