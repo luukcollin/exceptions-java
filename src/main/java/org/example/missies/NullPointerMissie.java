@@ -3,8 +3,6 @@ package org.example.missies;
 import java.util.Scanner;
 
 public class NullPointerMissie extends Missie {
-    final int TE_BEHALEN_PUNTEN = 3;
-    int behaaldePunten = 0;
     @Override
     int voerUit(boolean sloper) {
         GebruikerInteractie.toonBericht("een NullPointerException.", sloper);
@@ -19,7 +17,6 @@ public class NullPointerMissie extends Missie {
             e.printStackTrace();
             setPunten(sloper);
             GebruikerInteractie.toonBericht("Gevangen NullPointerException: " + e.getMessage());
-            return behaaldePunten;
             // Bied de gebruiker uitleg en tips om deze situatie te voorkomen.
         } catch (Exception e){
             behaaldePunten = DEVELOPER_STRAFPUNTEN;
