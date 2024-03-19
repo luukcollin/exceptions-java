@@ -8,7 +8,8 @@ public class GebruikerInteractie {
         String optieB = "Jij bent de ontmantelaar! Probeer de missie op te lossen: ";
         String message = sloper ? optieA : optieB;
         toonBericht(message);
-        toonBericht(bericht);
+        String voorkomOfVeroorzaak = sloper ? "Veroorzaak " : "Voorkom ";
+        toonBericht("Missie: " + voorkomOfVeroorzaak + bericht);
     }
 
     static void toonBericht(String bericht) {

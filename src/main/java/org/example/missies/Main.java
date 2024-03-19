@@ -1,13 +1,31 @@
 package org.example.missies;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static java.lang.System.exit;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Welkom bij de Karakter Tel Missie");
-        Missie missie2 = new KarakterTelMissie();
-        missie2.voerUit();
+        Missie[] missies = new Missie[]{new QuizMissie(), new NullPointerMissie(), new ArithmeticExceptionMissie(),new KarakterTelMissie(),new BestandLezenMissie() };
+//        Integer puntenOntmantelaars = voerMissiesUit(missies, false);
+        Integer puntenSlopers = voerMissiesUit(missies, true);
+//        Integer totaalPunten = puntenSlopers + puntenOntmantelaars;
 
-        System.out.println("Welkom bij Exception Quest!");
-        Missie missie = new BestandLezenMissie();
-        missie.voerUit();
+//        System.out.printf("Punten behaald als ontmantelaars: %d\n", puntenOntmantelaars);
+        System.out.printf("Punten behaald als slopers: %d\n", puntenSlopers);
+//        System.out.printf("Totaal aantal punten: %d\n", totaalPunten);
+
+
+
+//        System.out.println(puntenOntmantelaars);
+//        System.out.println("Behaalde puntenOntmantelaarsPunten: " + puntenOntmantelaars);
+    }
+
+    static private int voerMissiesUit(Missie[] missies, boolean alsSloper){
+        List<Missie> missiesLijst = new ArrayList<>();
+        missiesLijst.addAll(Arrays.stream(missies).toList());
+        return missiesLijst.stream().map(missie -> missie.voerUit(alsSloper)).reduce(Integer::sum).orElse(0);
     }
 }

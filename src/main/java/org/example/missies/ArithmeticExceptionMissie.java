@@ -1,21 +1,32 @@
 package org.example.missies;
 
 public class ArithmeticExceptionMissie extends Missie {
-    @Override
-    void voerUit() {
-        GebruikerInteractie.toonBericht("Missie: Voer een veilige deling uit en voorkom ArithmeticException.");
-        int teller = 10;
-        int noemer = 0; // Riskante waarde
 
+    @Override
+    int voerUit(boolean sloper) {
+        int teller = 10;
+        GebruikerInteractie.toonBericht("een ArithmeticException.", sloper);
+        GebruikerInteractie.toonBericht("Voer een deling uit met het getal %d".formatted(teller));
+
+        int noemer = 1; // default waarde
+        String antwoord = GebruikerInteractie.leesInput();
         try {
-            if (noemer == 0) {
-                throw new ArithmeticException("Delen door nul is niet toegestaan");
-            }
-            int resultaat = teller / noemer;
-            GebruikerInteractie.toonBericht("Resultaat van de deling is: " + resultaat);
+            noemer = Integer.parseInt(antwoord);
+            GebruikerInteractie.toonBericht("Resultaat is :" + teller / noemer);
+            setPunten(!sloper);
+        } catch(NumberFormatException e){
+            setPunten(sloper);
+            e.printStackTrace();
+            GebruikerInteractie.toonBericht("Gevangen NumberFormatException: " + e.getMessage());
         } catch (ArithmeticException e) {
+            setPunten(sloper);
+            e.printStackTrace();
             GebruikerInteractie.toonBericht("Gevangen ArithmeticException: " + e.getMessage());
-            // Bied uitleg over waarom delen door nul een probleem is en hoe dit te voorkomen.
+        } catch (Exception e){
+            behaaldePunten = DEVELOPER_STRAFPUNTEN;
+        }finally {
+            System.out.printf("Behaalde punten %d\n", behaaldePunten);
         }
+        return behaaldePunten;
     }
 }
